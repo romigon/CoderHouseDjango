@@ -1,0 +1,47 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>  </h1>
+ 
+  
+
+    <h3>Buscar paciente por documento:</h3>
+
+    <form action="/AppCoder/buscar/" method="GET">
+
+        <input type="number" name="documento_pac" id="documento_pac">
+
+        <input type="submit" value="Buscar paciente">
+
+
+
+
+    </form>
+
+    
+
+    {% if pacientes %}
+
+    <p>Estamos buscando el: {{documento_pac}}</p>
+
+    <ul>
+    {% for paciente in pacientes %}
+        <li> {{paciente.nombre}} </li>
+        <li> {{paciente.Apellido}} </li>
+        <li> {{paciente.documento_pac}} </li>
+    {% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+    {% if error %}
+    <p>{{error}}</p>
+    {% endif %}
+
+{% endblock %}
